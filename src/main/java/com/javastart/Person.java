@@ -1,11 +1,13 @@
 package com.javastart;
 
+import org.hibernate.validator.constraints.URL;
+import org.hibernate.validator.constraints.pl.PESEL;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import java.util.Objects;
+import java.time.LocalDate;
 
 public class Person {
 
@@ -15,16 +17,26 @@ public class Person {
     @NotNull
     @Size(min = 2)
     private String lastName;
+    @PESEL
+    private String pesel;
+    @Past
+    private LocalDate birthday;
     @Email
     private String email;
-    @Min(1)
-    private int age;
+    @NotNull
+    @Size(min = 5)
+    private String password;
+    @URL
+    private String blogUrl;
 
-    public Person(String firstName, String lastName, String email, int age) {
+    public Person(String firstName, String lastName, String pesel, LocalDate birthday, String email, String password, String blogUrl) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.pesel = pesel;
+        this.birthday = birthday;
         this.email = email;
-        this.age = age;
+        this.password = password;
+        this.blogUrl = blogUrl;
     }
 
     public String getFirstName() {
@@ -43,6 +55,22 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public String getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -51,32 +79,19 @@ public class Person {
         this.email = email;
     }
 
-    public int getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Person [firstName=" + firstName
-                + ", lastName=" + lastName
-                + ", email=" + email
-                + ", age=" + age + "]";
+    public String getBlogUrl() {
+        return blogUrl;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return age == person.age && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(email, person.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName, email, age);
+    public void setBlogUrl(String blogUrl) {
+        this.blogUrl = blogUrl;
     }
 }
