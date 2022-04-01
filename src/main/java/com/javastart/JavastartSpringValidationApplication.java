@@ -2,12 +2,20 @@ package com.javastart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class JavastartSpringValidationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JavastartSpringValidationApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringValidationApplication.class, args);
+        EmailMessage message = new EmailMessage(
+                "abc@abc.com",
+                "xyz@xyz.com",
+                "Hejo! Co tam kurka u Ciebie słychać wariacie? Pozdro"
+        );
+        EmailService emailService = context.getBean(EmailService.class);
+        emailService.sendMessage(message);
     }
 
 }
