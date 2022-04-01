@@ -16,12 +16,12 @@ public class JavastartSpringValidationApplication {
         ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringValidationApplication.class, args);
         Validator validator = context.getBean(Validator.class);
         Person person = new Person(
-                "Jan",
+                null,
                 "Kowalski",
-                "87041277815",
-                LocalDate.of(1987, 4, 12),
+                "987041277815",
+                LocalDate.of(2030, 4, 12),
                 "jan@kowalski.xyz",
-                "Qwerty87",
+                "asd",
                 "https://kowalski.xyz"
         );
         Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
