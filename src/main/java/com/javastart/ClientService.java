@@ -26,7 +26,7 @@ public class ClientService {
         String usernameBeginning = firstNameLetters + lastNameLetters;
         String username;
         do {
-            username = usernameBeginning + randomCode(3);
+            username = usernameBeginning;// + randomCode(3);
         } while (clientRepository.existsByUsername(username));
         return username;
     }

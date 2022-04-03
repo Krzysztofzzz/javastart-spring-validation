@@ -11,7 +11,7 @@ public class JavastartSpringValidationApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringValidationApplication.class, args);
         ClientService clientService = context.getBean(ClientService.class);
-        Client client = new Client("Jan", "Kowalski", "kowaljan@abc.com", 10);
+        Client client = new Client("Jan", "Kowalski", "kowaljan@abc.com", -10);
         try {
             clientService.register(client);
             System.out.println("Rejestracja powiodła się: " + client);
