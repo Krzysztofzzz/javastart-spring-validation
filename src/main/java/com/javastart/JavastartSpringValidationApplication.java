@@ -16,7 +16,7 @@ public class JavastartSpringValidationApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringValidationApplication.class, args);
         Validator validator = context.getBean(Validator.class);
-        Product product1 = new Product("Dell XPS 15", "Laptop 15 calowy z 2021 roku", "PL13243");
+        Product product1 = new Product("Dell XPS 15", "Laptop 15 calowy z 2021 roku", "PL1354243");
         Set<ConstraintViolation<Product>> productConstraintViolations = validator.validate(product1);
         if (!productConstraintViolations.isEmpty()) {
             System.out.println("Nieprawidłowy produkt. Złamane ograniczenia:");
@@ -24,7 +24,7 @@ public class JavastartSpringValidationApplication {
                     .map(ConstraintViolation::getMessage)
                     .forEach(System.out::println);
         }
-        Equipment equipment1 = new Equipment("iPhone 13", "KARNOW123", "EQ3986");
+        Equipment equipment1 = new Equipment("iPhone 13", "KARNOW123", "EQg3986");
         Set<ConstraintViolation<Equipment>> equipmentConstraintViolation = validator.validate(equipment1);
         if (!equipmentConstraintViolation.isEmpty()) {
             System.out.println("Nieprawidłowe wyposażenie. Złamane ograniczenia:");
