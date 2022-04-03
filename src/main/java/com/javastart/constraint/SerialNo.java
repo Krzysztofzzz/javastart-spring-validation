@@ -14,7 +14,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({FIELD})
 @Retention(RUNTIME)
 public @interface SerialNo {
-    String message() default "${validatedValue} is incorrect. It should start with {startsWith} and have {codeLength} digit number";
+    String message() default "{com.javastart.constraint.SerialNo.message}";
 
     Class<?>[] groups() default {};
 

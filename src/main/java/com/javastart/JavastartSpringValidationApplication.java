@@ -8,12 +8,14 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.util.Locale;
 import java.util.Set;
 
 @SpringBootApplication
 public class JavastartSpringValidationApplication {
 
     public static void main(String[] args) {
+        Locale.setDefault(new Locale("pl"));
         ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringValidationApplication.class, args);
         Validator validator = context.getBean(Validator.class);
         Product product1 = new Product("Dell XPS 15", "Laptop 15 calowy z 2021 roku", "PL1354243");
