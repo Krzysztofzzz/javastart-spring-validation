@@ -2,28 +2,11 @@ package com.javastart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import java.util.Set;
 
 @SpringBootApplication
 public class JavastartSpringValidationApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(JavastartSpringValidationApplication.class, args);
-        ClientService clientService = context.getBean(ClientService.class);
-        Client client = new Client("Jan", "Kowalski", "kowaljan@abc.com", 10);
-        try {
-            clientService.register(client);
-            System.out.println("Rejestracja powiodła się: " + client);
-        } catch (ConstraintViolationException cve) {
-            Set<ConstraintViolation<?>> errors = cve.getConstraintViolations();
-            System.out.printf("Rejestracja nie powiodła się %s\n", client);
-            errors.stream()
-                    .map(err -> " >" + err.getPropertyPath() + " " + err.getInvalidValue() + " " + err.getMessage())
-                    .forEach(System.out::println);
-        }
+        SpringApplication.run(JavastartSpringValidationApplication.class, args);
     }
 }
